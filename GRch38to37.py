@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# This script uses API to convert 10:25000..30000 from GRch38 format to GRch37
+# required python 3.x
+# usage : python GRch38to37.py
+# without any arguments
+
 import json
 from urllib.request import urlopen, Request
 

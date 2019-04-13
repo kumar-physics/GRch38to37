@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# This script is a generalized version of GRch38to37.py
+# It required python 3.x
+# usage : python cs_converter.py <chromosome> <start> <end> <input coordinate system> <output coordinate system>
+# Example : python cs_convert.py 10 25000 30000 GRch38 GRch37
+
+
+
+
 import json
 from urllib.request import urlopen, Request
 import sys
