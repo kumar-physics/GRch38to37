@@ -28,13 +28,13 @@ my $strand     = $slice->strand();
 print "Input Slice: $coord_sys $coord_ver $seq_region $start-$end ($strand)\n\n";
 
 my $feat = new Bio::EnsEMBL::Feature(
-    -start => 95939,
-    -end  => 100939,
+    -start => 25000,
+    -end  => 30000,
     -strand => 1,
     -slice => $slice
 );
 print "Slice converted using transform method\n";
-if ( my $new_feature = $feat->transform('chromosome','GRch38') ) {
+if ( my $new_feature = $feat->transform('chromosome','GRch37') ) {
     printf(
         "Output Slice: %s %d-%d (%+d) %s\n\n",
         $new_feature->slice->seq_region_name(),
@@ -44,14 +44,14 @@ if ( my $new_feature = $feat->transform('chromosome','GRch38') ) {
 } else {
     print "Feature is not defined in clonal coordinate system\n";
 }
-print "Output Slice converted using project method\n";
-my $projection = $feat->project('chromosome','GRch38');
+print "Slice converted using project method\n";
+my $projection = $feat->project('chromosome','GRch37');
 
 foreach my $segment ( @{$projection} ) {
     my $to_slice = $segment->to_Slice();
 
     printf(
-        "Slice: %s %d-%d (%+d) %s\n",
+        "Output Slice: %s %d-%d (%+d) %s\n",
         $to_slice->seq_region_name(), $to_slice->start(),
         $to_slice->end(),             $to_slice->strand(),
 	$to_slice->coord_system()->version()
